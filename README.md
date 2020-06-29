@@ -33,6 +33,6 @@ Simply click the button below and log into your org:
 </a>
 
 
-For an SFDX Unlocked Package Version, Click here:
+Or click here to deploy to a DevHub Org:
 
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
