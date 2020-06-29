@@ -1,0 +1,1 @@
+SELECT Name, Active__c, Description__c, SOQL_WHERE_Clause__c FROM Demo_Reset_Task__c

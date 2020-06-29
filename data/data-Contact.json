@@ -1,0 +1,26 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef1"
+            },
+            "FirstName": "David",
+            "LastName": "Larrimore",
+            "Email": "david.larrimore.demo@mailinator.com",
+            "Phone": "5555555555",
+            "Title": "Developer"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef2"
+            },
+            "FirstName": "Test",
+            "LastName": "test",
+            "Email": "test.test.demo@mailinator.com",
+            "Phone": "5555555555",
+            "Title": "CEO"
+        }
+    ]
+}

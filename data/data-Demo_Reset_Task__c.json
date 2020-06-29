@@ -1,0 +1,14 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Demo_Reset_Task__c",
+                "referenceId": "Demo_Reset_Task__cRef1"
+            },
+            "Active__c": true,
+            "Description__c": "Delete all but Test User",
+            "Object_API_Name__c": "Contact",
+            "SOQL_WHERE_Clause__c": "FirstName = 'David'"
+        }
+    ]
+}
