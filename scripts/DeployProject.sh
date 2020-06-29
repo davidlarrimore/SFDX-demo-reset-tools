@@ -15,7 +15,7 @@ echo "*** Creating Package Version..."
 sfdx force:package:version:create --package "Demo Reset Tools" --installationkey test1234 --wait 10
 
 echo "*** Promoting Package ..."
-sfdx force:package:version:promote -p "Demo Reset Tools@0.1.0-1"
+sfdx force:package:version:promote -p "Demo Reset Tools@0.1.0-4"
 
 
 echo "*** Pushing Package to Package Manager Org ..."
