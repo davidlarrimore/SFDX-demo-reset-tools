@@ -4,11 +4,18 @@
             "path": "force-app",
             "default": true,
             "package": "Demo Reset Tools",
-            "versionName": "ver 0.1",
+            "versionName": "ver 1.0",
             "versionNumber": "0.1.0.NEXT"
+        },
+        {
+            "path": "force-app",
+            "package": "Demo Reset Tools Unlocked",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
         }
     ],
-    "namespace": "",
+    "namespace": "gpbu-dkl",
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "47.0",
     "packageAliases": {
@@ -16,6 +23,11 @@
         "Demo Reset Tools@0.1.0-1": "04t3h000003vnvyAAA",
         "Demo Reset Tools@0.1.0-3": "04t3h000003voCjAAI",
         "Demo Reset Tools@0.1.0-4": "04t3h000003vofiAAA",
-        "Demo Reset Tools@0.1.0-5": "04t3h000003vrTrAAI"
+        "Demo Reset Tools@0.1.0-5": "04t3h000003vrTrAAI",
+        "Demo Reset Tools@0.1.0-6": "04t3h000003w3TPAAY",
+        "Demo Reset Tools Unlocked": "0Ho3h000000k9rTCAQ",
+        "Demo Reset Tools Unlocked@0.1.0-1": "04t3h000003w3bkAAA",
+        "Demo Reset Tools@0.1.0-7": "04t3h000003w3bpAAA",
+        "Demo Reset Tools Unlocked@0.1.0-2": "04t3h000003w3buAAA"
     }
 }
