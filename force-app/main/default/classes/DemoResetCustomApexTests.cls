@@ -3,7 +3,10 @@ public with sharing class DemoResetCustomApexTests {
 
     @isTest static void DemoResetCustomApexTests() {
         List<DemoResetTools.Toast> toasts = DemoResetCustomApex.runCustomApex();
-        System.assertEquals(true,true);
+        Integer v1 = 1;
+
+        System.assertEquals(toasts.size(),v1);
+
     }
 
 }
