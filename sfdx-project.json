@@ -4,15 +4,15 @@
             "path": "force-app",
             "default": true,
             "package": "Demo Reset Tools",
-            "versionName": "ver 1.0",
-            "versionNumber": "1.0.0.NEXT"
+            "versionName": "ver 1.1",
+            "versionNumber": "1.1.0.NEXT"
         },
         {
             "path": "force-app",
             "default": false,
             "package": "Demo Reset Tools Unlocked",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT"
+            "versionName": "ver 1.1",
+            "versionNumber": "1.1.0.NEXT"
         }
     ],
     "namespace": "gpbu_dkl",
@@ -31,6 +31,8 @@
         "Demo Reset Tools Unlocked@0.1.0-2": "04t3h000003w3buAAA",
         "Demo Reset Tools@0.1.0-8": "04t3h000003wJg3AAE",
         "Demo Reset Tools@0.1.0-9": "04t3h000003wKwkAAE",
-        "Demo Reset Tools@0.1.0-10": "04t3h000003wQg0AAE"
+        "Demo Reset Tools@0.1.0-10": "04t3h000003wQg0AAE",
+        "Demo Reset Tools Unlocked@0.1.0-3": "04t3h000003wX0aAAE",
+        "Demo Reset Tools Unlocked@1.1.0-1": "04t3h000003wbc3AAA"
     }
 }

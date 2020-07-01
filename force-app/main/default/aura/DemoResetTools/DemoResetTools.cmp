@@ -111,6 +111,8 @@
                     <p>
                         You can always find the latest version of this component in <lightning:formattedUrl label="this GitHub repository" value="https://github.com/johnsfdemo/Demo-Reset-Tools" />.
                     </p>
+                    <br/>
+                    <h2 class="slds-p-bottom_medium"><strong>Demo Reset Tools - Version 2.0</strong></h2>
                 </lightning:tile>
             </div>
         </section>
