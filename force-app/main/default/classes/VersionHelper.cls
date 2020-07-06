@@ -1,6 +1,7 @@
 public with sharing class VersionHelper {
     
-    public String getCurrentVersion(){
+    public List<String> getGithubSubscriberPackageVersions(String packageName){
+        List<String> versions = new List<String>();
         string latestVersion = '';
 
         Http http = new Http();
@@ -19,22 +20,25 @@ public with sharing class VersionHelper {
            
             for (String fieldName : packages.keySet()){
                 System.debug('field name is ' + fieldName);
-                if(fieldName.contains('Demo Reset Tools Unlocked@')){
+                //PackageName = 'Demo Reset Tools Unlocked@'
+                if(fieldName.contains(packageName)){
                     latestVersion = fieldName;
                 }
+                versions.add((String)packages.get(fieldName));
             }
             System.debug('Latest Version of "Demo Reset Tools Unlocked" is: ' + latestVersion + ' (' + packages.get(latestVersion) + ')');
         }
-        return latestVersion; 
+        System.debug('Returning SubscriberPackageVersions: ' + versions);
+        return versions; 
     }
 
-    public String getInstalledVersion(){
+    public List<SFDXPackage> getInstalledVersions(){
 
         HttpRequest request = new HttpRequest();
         request.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         request.setHeader('Content-Type', 'application/json');
         String SFdomainUrl=URL.getSalesforceBaseUrl().toExternalForm();
-        String query='SELECT+Id+,SubscriberPackageId+,SubscriberPackageVersionId+,SubscriberPackage.Name+FROM+InstalledSubscriberPackage';
+        String query='SELECT+Id+,SubscriberPackage.Name+,SubscriberPackage.Id+,SubscriberPackage.NamespacePrefix+,SubscriberPackageVersion.Name+,SubscriberPackageVersion.BuildNumber+,SubscriberPackageVersion.Id+,SubscriberPackageVersion.MajorVersion+,SubscriberPackageVersion.MinorVersion+,SubscriberPackageVersion.PatchVersion+FROM+InstalledSubscriberPackage';
         //string query='SELECT+Id+FROM+InstalledSubscriberPackage';
         request.setEndpoint(SFdomainUrl+'/services/data/v48.0/tooling/query/?q='+query);
         
@@ -47,29 +51,32 @@ public with sharing class VersionHelper {
         
         List<Object> records = (List<Object>) results.get('records');
         system.debug('Records:' + records);
-        for(Object thisRecord: records){
-            SFDXPackage newPackage = new SFDXPackage();
-            Map<String, Object> SFDXPackage = (Map<String, Object>) thisRecord;
-            Map<String, Object> SFDXSubscriberPackage = (Map<String, Object>) SFDXPackage.get('SubscriberPackage');
+        List<SFDXPackage> SFDXPackages = new List<SFDXPackage>();
 
-            newPackage.PackageId = (String)SFDXPackage.get('Id');
-            newPackage.SubscriberPackageVersionId = (String)SFDXPackage.get('SubscriberPackageVersionId');
-            newPackage.SubscriberPackageId = (String)SFDXPackage.get('SubscriberPackageId');
-            newPackage.SubscriberPackageId = (String)SFDXPackage.get('SubscriberPackageId');
-            newPackage.SubscriberPackageName = (String)SFDXSubscriberPackage.get('Name');               
+        for(Object thisRecord: records){
+            SFDXPackage newSFDXPackage = new SFDXPackage();
+            Map<String, Object> ThisPackage = (Map<String, Object>) thisRecord;
+            Map<String, Object> ThisSubscriberPackage = (Map<String, Object>) ThisPackage.get('SubscriberPackage');
+            Map<String, Object> ThisSubscriberPackageVersion = (Map<String, Object>) ThisPackage.get('SubscriberPackageVersion');
+
+            newSFDXPackage.PackageId = (String)ThisPackage.get('Id');
+            newSFDXPackage.SubscriberPackageVersionId = (String)ThisPackage.get('SubscriberPackageVersionId');
+            newSFDXPackage.SubscriberPackageId = (String)ThisPackage.get('SubscriberPackageId');
+            newSFDXPackage.SubscriberPackageName = (String)ThisSubscriberPackage.get('Name');               
             
             system.debug('Record:' + thisRecord);
-            system.debug('PackageId = ' + newPackage.PackageId); 
-            system.debug('PackageName = ' + newPackage.SubscriberPackageName); 
-            system.debug('SubscriberPackageVersionId = ' + newPackage.SubscriberPackageVersionId); 
-            system.debug('SubscriberPackageId = ' + newPackage.SubscriberPackageId); 
-        
+            system.debug('PackageId = ' + newSFDXPackage.PackageId); 
+            system.debug('PackageName = ' + newSFDXPackage.SubscriberPackageName); 
+            system.debug('SubscriberPackageVersionId = ' + newSFDXPackage.SubscriberPackageVersionId); 
+            system.debug('SubscriberPackageId = ' + newSFDXPackage.SubscriberPackageId); 
+            
+            SFDXPackages.add(newSFDXPackage);
         }          
         
         System.debug(records);
         
 
-        return '';
+        return SFDXPackages;
 
     }
 

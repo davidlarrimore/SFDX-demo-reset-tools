@@ -4,14 +4,14 @@
             "path": "force-app",
             "default": true,
             "package": "Demo Reset Tools",
-            "versionName": "ver 1.1",
+            "versionName": "Beta",
             "versionNumber": "1.1.0.NEXT"
         },
         {
             "path": "force-app",
             "default": false,
             "package": "Demo Reset Tools Unlocked",
-            "versionName": "ver 1.1",
+            "versionName": "Beta",
             "versionNumber": "1.1.0.NEXT"
         }
     ],
