@@ -70,42 +70,8 @@ public with sharing class VersionHelper {
         return SFDXPackages;
     }
 
-    //grabs information on 1 package
-    //TODO
-    public static List<SFDXPackage> getInstalledPackages(){
-        Map<String, Object> results = new Map<String, Object>();
-        List<Object> records = (List<Object>) VersionHelper.getMetadataAPI('SELECT+Id+,SubscriberPackage.Name+,SubscriberPackage.Id+,SubscriberPackage.NamespacePrefix+,SubscriberPackageVersion.Name+,SubscriberPackageVersion.BuildNumber+,SubscriberPackageVersion.Id+,SubscriberPackageVersion.MajorVersion+,SubscriberPackageVersion.MinorVersion+,SubscriberPackageVersion.PatchVersion+FROM+InstalledSubscriberPackage');
-        
-        system.debug('Records:' + records);
-        List<SFDXPackage> SFDXPackages = new List<SFDXPackage>();
-
-        for(Object thisRecord: records){
-            SFDXPackage newSFDXPackage = new SFDXPackage();
-            Map<String, Object> ThisPackage = (Map<String, Object>) thisRecord;
-            Map<String, Object> ThisSubscriberPackage = (Map<String, Object>) ThisPackage.get('SubscriberPackage');
-            Map<String, Object> ThisSubscriberPackageVersion = (Map<String, Object>) ThisPackage.get('SubscriberPackageVersion');
-
-            newSFDXPackage.PackageId = (String)ThisPackage.get('Id');
-            newSFDXPackage.SubscriberPackageVersionId = (String)ThisPackage.get('SubscriberPackageVersionId');
-            newSFDXPackage.SubscriberPackageId = (String)ThisPackage.get('SubscriberPackageId');
-            newSFDXPackage.SubscriberPackageName = (String)ThisSubscriberPackage.get('Name');               
-            
-            system.debug('Record:' + thisRecord);
-            system.debug('PackageId = ' + newSFDXPackage.PackageId); 
-            system.debug('PackageName = ' + newSFDXPackage.SubscriberPackageName); 
-            system.debug('SubscriberPackageVersionId = ' + newSFDXPackage.SubscriberPackageVersionId); 
-            system.debug('SubscriberPackageId = ' + newSFDXPackage.SubscriberPackageId); 
-            
-            SFDXPackages.add(newSFDXPackage);
-        }          
-        
-        System.debug(records);
-        return SFDXPackages;
-    }
-
-
     public static List<SFDXPackage> getSalesforcePackageInfo(SFDXPackage lastestSFDXPackage){
-        List<String> subscriberPackageVersions = getGithubSubscriberPackageVersions(packageName);
+        List<String> subscriberPackageVersions = getGithubSubscriberPackageVersions(lastestSFDXPackage.SubscriberPackageName);
         Map<String, Object> results = new Map<String, Object>();
 
         List<Object> records = (List<Object>) VersionHelper.getMetadataAPI('SELECT+Id+,SubscriberPackage.Name+,SubscriberPackage.Id+,SubscriberPackage.NamespacePrefix+,SubscriberPackageVersion.Name+,SubscriberPackageVersion.BuildNumber+,SubscriberPackageVersion.Id+,SubscriberPackageVersion.MajorVersion+,SubscriberPackageVersion.MinorVersion+,SubscriberPackageVersion.PatchVersion+FROM+InstalledSubscriberPackage');
